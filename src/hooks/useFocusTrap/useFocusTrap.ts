@@ -7,7 +7,7 @@ type FocusableElement =
   | HTMLSelectElement
   | HTMLTextAreaElement
 
-const useFocusTrap = () => {
+export const useFocusTrap = () => {
   let trapElement = useWindowElement()
   let firstFocusableElement: FocusableElement | null = null
   let lastFocusableElement: FocusableElement | null = null
@@ -79,5 +79,3 @@ const useFocusTrap = () => {
     removeFocusTrap,
   }
 }
-
-export { useFocusTrap }

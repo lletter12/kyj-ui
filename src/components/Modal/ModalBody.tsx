@@ -5,6 +5,7 @@ import { ModalContext } from "./ModalContext"
 import React, {CSSProperties, ReactNode, useContext, useEffect, useRef, useState} from "react";
 import {useWindowHeight} from "../../hooks/useWindowHeight/useWindowHeight.ts";
 import {cn} from "../../utils/cn/cn.ts";
+import {useScroll} from "../../hooks/useScroll/useScroll.ts";
 
 export type ModalBodyThemeType = {
     wrapper?: string
@@ -52,16 +53,19 @@ export const ModalBody: React.FC<ModalBodyProps> = React.forwardRef<
             modalBodyTheme.scrollable,
             className
         )
+        const scroll = useScroll(modalInnerRef)
 
         useEffect(() => {
             if (
                 modalInnerRef.current &&
                 modalInnerRef.current.scrollHeight &&
                 modalInnerRef.current.scrollHeight >
-                modalInnerRef.current.getBoundingClientRect().height
+                modalInnerRef.current.getBoundingClientRect().height &&
+                scroll
             ) {
                 handleScrollActive?.(
                     modalInnerRef.current.scrollHeight -
+                    Math.round(scroll.top) -
                     modalInnerRef.current.clientHeight ===
                     0
                 )
