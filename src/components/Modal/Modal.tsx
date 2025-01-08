@@ -6,7 +6,7 @@ import React, {useCallback, useEffect, useRef, useState} from "react";
 import {useWindowElement} from "../../hooks/useWindowElement/useWindowElement.ts";
 import {useFocusTrap} from "../../hooks/useFocusTrap/useFocusTrap.ts";
 import {cn} from "../../utils/cn/cn.ts";
-import {useTransition} from "../../hooks/useTransition/useTransition.ts";
+import {useModalTransition} from "../../hooks/useModalTransition/useModalTransition.ts";
 import {useIsomorphicLayoutEffect} from "../../hooks/useIsomorphicLayoutEffect/useIsomorphicLayoutEffect.ts";
 import {Backdrop} from "../Backdrop/BackDrop.tsx";
 import ReactDOM from "react-dom";
@@ -117,7 +117,7 @@ export const Modal: React.FC<ModalComponentProps> = ({
         isOpenModal ? theme.show : "hidden"
     )
 
-    const {onTransitionHide} = useTransition(modalReference.current)
+    const {onTransitionHide} = useModalTransition(modalReference.current)
 
     const updateScrollActive = (value: boolean) => {
         setScrollActive(value)

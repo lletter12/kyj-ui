@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 
-const useTransition = (
+const useModalTransition = (
     referenceElement:
         | React.MutableRefObject<HTMLElement | null>
         | HTMLElement
@@ -95,4 +95,4 @@ const useTransition = (
     }
 }
 
-export { useTransition }
+export { useModalTransition }
